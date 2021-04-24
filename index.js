@@ -1,7 +1,7 @@
 //Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHtml = require('./utils/generateHtml.js');
+const generateHtml = require('./src/generateHtml.js');
 const questions = require("./data/questions");
 const { Manager, Engineer, Intern } = require("./lib/classes.js");
 
@@ -38,7 +38,7 @@ const setData = async id => {
 };
 
 //Create a function to initialize app
-const init = async () => writeToFile("index.html", generateHtml(await setData(id)));
+const init = async () => writeToFile("./dist/index.html", generateHtml(await setData(id)));
 
 // Function call to initialize app
 init();

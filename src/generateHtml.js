@@ -28,7 +28,7 @@ const generateHtml = data => {
       <h1>My Team</h1>
     </header>
 
-    <main class="row center">
+    <main class="row justify-content-center my-3">
 
       ${data.map(employee => `
         <div class="card m-5" style="width: 18rem;">
@@ -39,10 +39,10 @@ const generateHtml = data => {
           <div class="container p-3 bg-light">
             <ul class="list-group list-group-flush mx-auto">
               <li class="list-group-item">ID: ${employee.id}</li>
-              <li class="list-group-item">Email: <a href="${employee.email}" target="blank">${employee.email}</a></li>
+              <li class="list-group-item">Email: <a href="#" target="blank">${employee.email}</a></li>
               <li class="list-group-item">${
                 employee.getRole() == "Manager" ? `Office Number: ${employee.officeNumber}` :
-                employee.getRole() == "Engineer" ? `GitHub: <a href="https://github.com/${employee.github}" target="blank">${employee.github}</a>` :
+                employee.getRole() == "Engineer" ? `GitHub: <a href="https://github.com/" target="blank">${employee.github}</a>` :
                 employee.getRole() == "Intern" ? `School: ${employee.school}` : ''
               }</li>
             </ul>

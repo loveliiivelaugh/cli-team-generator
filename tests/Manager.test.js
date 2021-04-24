@@ -6,7 +6,7 @@ describe("Manager", () => {
     it("should create an object with 'name', 'index', 'email', and 'office number'", () => {
       const manager = new Manager("Tester", 1, "test@test.test", 1);
 
-      expect(manager).toEqual({name: "Tester", index: 1, email: "test@test.test"});
+      expect(manager).toEqual({name: "Tester", id: 1, email: "test@test.test", officeNumber: 1});
     });
   });
 

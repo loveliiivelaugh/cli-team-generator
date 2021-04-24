@@ -3,10 +3,10 @@ const { Intern } = require("../lib/classes");
 describe("intern", () => {
 
   describe("Initialization", () => {
-    it("should create an object with 'name', 'index', 'email', and 'github username'", () => {
+    it("should create an object with 'name', 'index', 'email', and 'school'", () => {
       const intern = new Intern("Tester", 1, "test@test.test", "Fictional University");
 
-      expect(intern).toEqual({name: "Tester", index: 1, email: "test@test.test"});
+      expect(intern).toEqual({name: "Tester", id: 1, email: "test@test.test", school: "Fictional University"});
     });
   });
 

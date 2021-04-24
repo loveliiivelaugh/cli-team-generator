@@ -4,15 +4,15 @@ describe("Engineer", () => {
 
   describe("Initialization", () => {
     it("should create an object with 'name', 'index', 'email', and 'github username'", () => {
-      const engineer = new Engineer("Tester", 1, "test@test.test", "https://github.com/testing123");
+      const engineer = new Engineer("Tester", 1, "test@test.test", "testing123");
 
-      expect(engineer).toEqual({name: "Tester", index: 1, email: "test@test.test"});
+      expect(engineer).toEqual({name: "Tester", id: 1, email: "test@test.test", github: "testing123"});
     });
   });
 
   describe("getName", () => {
     it("should return the value of the name property on the object", () => {
-      const engineer = new Engineer("Tester", 1, "test@test.test", "https://github.com/testing123");
+      const engineer = new Engineer("Tester", 1, "test@test.test", "testing123");
 
       const name = engineer.getName();
 
@@ -22,7 +22,7 @@ describe("Engineer", () => {
 
   describe("getId", () => {
     it("should return the value of the id property on the object", () => {
-      const engineer = new Engineer("Tester", 1, "test@test.test", "https://github.com/testing123");
+      const engineer = new Engineer("Tester", 1, "test@test.test", "testing123");
 
       const id = engineer.getId();
 
@@ -32,7 +32,7 @@ describe("Engineer", () => {
 
   describe("getEmail", () => {
     it("should return the value of the email property on the object", () => {
-      const engineer = new Engineer("Tester", 1, "test@test.test", "https://github.com/testing123");
+      const engineer = new Engineer("Tester", 1, "test@test.test", "testing123");
 
       const email = engineer.getEmail();
 
@@ -42,7 +42,7 @@ describe("Engineer", () => {
 
   describe("getRole", () => {
     it("should return the value of the role property on the object", () => {
-      const engineer = new Engineer("Tester", 1, "test@test.test", "https://github.com/testing123");
+      const engineer = new Engineer("Tester", 1, "test@test.test", "testing123");
 
       const role = engineer.getRole();
 
@@ -52,11 +52,11 @@ describe("Engineer", () => {
 
   describe("getGithub", () => {
     it("should return the value of the role property on the object", () => {
-      const engineer = new Engineer("Tester", 1, "test@test.test", "https://github.com/testing123");
+      const engineer = new Engineer("Tester", 1, "test@test.test", "testing123");
 
       const github = engineer.getGithub();
 
-      expect(github).toEqual("https://github.com/testing123");
+      expect(github).toEqual("testing123");
     });
   });
 

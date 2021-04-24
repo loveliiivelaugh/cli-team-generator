@@ -24,7 +24,7 @@ A small CLI application that allows the user to dynamically generate a styled HT
 * [License](#License)
 
 
-* [How to Contribute](#How to Contribute)
+* [Contribute](#Contribute)
 
 
 * [Tests](#Tests)
@@ -39,10 +39,6 @@ A small CLI application that allows the user to dynamically generate a styled HT
 <code>
 npm install
 </code>
-
-## Usage
-
-N
 
 ## License
 
