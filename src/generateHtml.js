@@ -10,6 +10,14 @@ const generateHtml = data => {
     }[role];
   };
 
+  const setListItem = employee => {
+    return {
+      "Manager": `Office Number: ${employee.officeNumber}`,
+      "Engineer": `GitHub: <a href="https://github.com/" target="blank">${employee.github}</a>`,
+      "Intern": `School: ${employee.school}`
+    }[employee.getRole()];
+  };
+
   return `
   <!DOCTYPE html>
   <html>
@@ -41,11 +49,7 @@ const generateHtml = data => {
             <ul class="list-group list-group-flush mx-auto">
               <li class="list-group-item">ID: ${employee.id}</li>
               <li class="list-group-item">Email: <a href="#" target="blank">${employee.email}</a></li>
-              <li class="list-group-item">${
-                employee.getRole() == "Manager" ? `Office Number: ${employee.officeNumber}` :
-                employee.getRole() == "Engineer" ? `GitHub: <a href="https://github.com/" target="blank">${employee.github}</a>` :
-                employee.getRole() == "Intern" ? `School: ${employee.school}` : ''
-              }</li>
+              <li class="list-group-item">${setListItem(employee)}</li>
             </ul>
           </div>
         </div>
