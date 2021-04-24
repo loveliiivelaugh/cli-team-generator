@@ -40,19 +40,19 @@ const setData = async type => {
     "Intern": (name, id, email, school) => employees.push(new Intern(name, id, email, school))
   };
 
-  //deconstruct the 3 common properties 
-  const { name, email, id } = response;
+  //deconstruct the response answer properties 
+  const { name, email, id, createNewEmployee, office, github, school } = response;
 
-  //using the type key setEmployee() passing in the respective values
-  setEmployee[type]( name, id, email, response.office || response.github || response.school);
+  //using the type key and setEmployee[type]() => passing in the respective values
+  setEmployee[type](name, id, email, office || github || school);
 
   //pass a conditional and return
-  return response.createNewEmployee == "Engineer" ? //if Engineer was selected
-  setData("Engineer") : //run the setData() function again passing in the Engineer key
-  response.createNewEmployee == "Intern" ? //if Intern was selected
-  setData("Intern") : //run the setData() function again passing in the Intern key
-  response.createNewEmployee == "Quit" &&//if Quit was selected
-  employees;//end the function returning the employees array
+  //if Engineer was selected //run the setData() function again passing in the Engineer key
+  return createNewEmployee == "Engineer" ? setData("Engineer") :
+  //if Intern was selected //run the setData() function again passing in the Intern key
+  createNewEmployee == "Intern" ? setData("Intern") :
+  //if Quit was selected //end the function returning the employees array
+  createNewEmployee == "Quit" && employees;
 
 };
 
