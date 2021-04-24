@@ -1,6 +1,7 @@
+//function that handles taking the data and generating html using that data
 const generateHtml = data => { 
-  console.log("data: ", data);
 
+  //function that handles dynamically setting the icon based on the employee role
   const getIcon = role => {
     return {
       "Manager": `<i class="fa fa-coffee" aria-hidden="true"></i>`,
