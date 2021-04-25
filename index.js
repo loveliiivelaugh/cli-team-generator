@@ -9,7 +9,7 @@ const { Manager, Engineer, Intern } = require("./lib/classes.js");
 const employees = [];
 
 //Create a function to write HTML file
-const writeToFile = (fileName, data) => fs.writeFile(fileName, data, err => err ? console.error(err) : console.log('Success!'));
+const writeToFile = (fileName, data) => fs.writeFile(fileName, data, error => error ? console.error(error) : console.log('Success!'));
 
 //useInquirer function takes in the type in order to prompt the relative questions.
 const useInquirer = type => {
@@ -28,8 +28,8 @@ const useInquirer = type => {
     .catch(error => error.isTtyError ? console.error(error.isTtyError) : console.error(error));
 };
 
-//setData function handles using the answers response to make a new employee object respectively
-const setData = async type => {
+//dataHandler function handles using the answers response to make a new employee object respectively
+const dataHandler = async type => {
   //asynchronously await for the answers passing in the type to determine the question group
   const response = await useInquirer(type);
 
@@ -47,17 +47,19 @@ const setData = async type => {
   setEmployee[type](name, id, email, office || github || school);
 
   //pass a conditional and return
-  //if Engineer was selected //run the setData() function again passing in the Engineer key
-  return createNewEmployee == "Engineer" ? setData("Engineer") :
-  //if Intern was selected //run the setData() function again passing in the Intern key
-  createNewEmployee == "Intern" ? setData("Intern") :
+  //if Engineer was selected //run the dataHandler() function again passing in the Engineer key
+  return createNewEmployee == "Engineer" ? dataHandler("Engineer") :
+  //if Intern was selected //run the dataHandler() function again passing in the Intern key
+  createNewEmployee == "Intern" ? dataHandler("Intern") :
   //if Quit was selected //end the function returning the employees array
   createNewEmployee == "Quit" && employees;
 
 };
 
 //init() function to initialize app -- using 1 liner and nested functions to call inquirer looping over until we quit, capturing the data, generating the html, and writing it to a file.
-const init = async () => writeToFile("./dist/index.html", generateHtml(await setData("Manager")));
+const init = async () => writeToFile("./dist/index.html", generateHtml(await dataHandler("Manager")));
+
+module.exports = employees;
 
 // Function call to initialize app
 init();

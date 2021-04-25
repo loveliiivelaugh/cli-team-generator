@@ -2,7 +2,7 @@
 const generateHtml = data => { 
 
   //function that handles dynamically setting the icon based on the employee role
-  const getIcon = role => {
+  const setIcon = role => {
     return {
       "Manager": `<i class="fa fa-coffee" aria-hidden="true"></i>`,
       "Engineer": `<i class="fa fa-laptop" aria-hidden="true"></i>`,
@@ -10,6 +10,7 @@ const generateHtml = data => {
     }[role];
   };
 
+  //switchCase function to set the dynamic List Item depending on the type of Employee
   const setListItem = employee => {
     return {
       "Manager": `Office Number: ${employee.officeNumber}`,
@@ -43,7 +44,7 @@ const generateHtml = data => {
         <div class="card m-5" style="width: 18rem;">
           <div class="card bg-primary text-white p-3">
             <h3 class="card-title">${employee.name.charAt(0).toUpperCase() + employee.name.slice(1)}</h3>
-            <h5 class="card-subtitle">${getIcon(employee.getRole()) + ' ' + employee.getRole()}</h5>
+            <h5 class="card-subtitle">${setIcon(employee.getRole()) + ' ' + employee.getRole()}</h5>
           </div>
           <div class="container p-3 bg-light">
             <ul class="list-group list-group-flush mx-auto">
