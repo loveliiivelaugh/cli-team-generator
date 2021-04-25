@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHtml = require('./src/generateHtml.js');
-const { managerQuestions, engineerQuestions, internQuestions } = require("./data/questions");
+const questions = require("./data/questions");
 const { Manager, Engineer, Intern } = require("./lib/classes.js");
 
 // assign an empty array to hold the collection of employee objects.
@@ -12,21 +12,12 @@ const employees = [];
 const writeToFile = (fileName, data) => fs.writeFile(fileName, data, error => error ? console.error(error) : console.log('Success!'));
 
 //useInquirer function takes in the type in order to prompt the relative questions.
-const useInquirer = type => {
-
-  //switchCase object using the key to return the correct questions group
-  const questionsGroup = {
-    "Manager": managerQuestions,
-    "Engineer": engineerQuestions,
-    "Intern": internQuestions
-  };
-
-  //once the type of questions has been determined, prompt the user with the questions
-  return inquirer
-    .prompt(questionsGroup[type])
+const useInquirer = type =>
+  //prompt the user with the questions
+  inquirer
+    .prompt(questions(employees, type))
     .then(answers => answers)//return the captured answers
     .catch(error => error.isTtyError ? console.error(error.isTtyError) : console.error(error));
-};
 
 //dataHandler function handles using the answers response to make a new employee object respectively
 const dataHandler = async type => {
