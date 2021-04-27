@@ -44,15 +44,7 @@ A small CLI application that allows the user to dynamically generate a styled HT
 
 ![Screencast1](./assets/images/screencast1.mov)
 
-<video width="320" height="240" controls>
-  <source src="./assets/images/screencast1.mov" type="video/mp4">
-</video>
-
 ![Screencast2](./assets/images/screencast1.mov)
-
-<video width="320" height="240" controls>
-  <source src="./assets/images/screencast1.mov" type="video/mp4">
-</video>
 
 ## Features
 
