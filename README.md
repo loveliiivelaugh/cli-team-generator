@@ -44,7 +44,15 @@ A small CLI application that allows the user to dynamically generate a styled HT
 
 ![Screencast1](./assets/images/screencast1.mov)
 
+<video width="320" height="240" controls>
+  <source src="./assets/images/screencast1.mov" type="video/mp4">
+</video>
+
 ![Screencast2](./assets/images/screencast1.mov)
+
+<video width="320" height="240" controls>
+  <source src="./assets/images/screencast1.mov" type="video/mp4">
+</video>
 
 ## Features
 
@@ -209,7 +217,7 @@ Tests are located in the `./tests/` directory. There is one file containing all 
 
 Follow me at my [GitHub](https://github.com/loveliiivelaugh) to discover more of my projects.
 
-Feel free to reach out at my email, [woodward.michael.a@gmail.com](woodward.michael.a@gmail.com) if you have any odditional questions or just want to chat!
+Feel free to reach out at my email [woodward.michael.a@gmail.com](woodward.michael.a@gmail.com) if you have any odditional questions or just want to chat!
 
 
 #### This README was generated with the [CLI README Generator](https://github.com/loveliiivelaugh/nu-hw9-cli-readme-generator) app.
