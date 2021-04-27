@@ -13,7 +13,7 @@ const writeToFile = (fileName, data) => fs.writeFile(fileName, data, error => er
 
 //useInquirer function takes in the type in order to prompt the relative questions.
 const useInquirer = type =>
-  //prompt the user with the questions
+  //prompt the user with the questions using the questions() function --> dynamically sets the appropriate questions based on type
   inquirer
     .prompt(questions(employees, type))
     .then(answers => answers)//return the captured answers
@@ -44,13 +44,10 @@ const dataHandler = async type => {
   createNewEmployee == "Intern" ? dataHandler("Intern") :
   //if Quit was selected //end the function returning the employees array
   createNewEmployee == "Quit" && employees;
-
 };
 
 //init() function to initialize app -- using 1 liner and nested functions to call inquirer looping over until we quit, capturing the data, generating the html, and writing it to a file.
 const init = async () => writeToFile("./dist/index.html", generateHtml(await dataHandler("Manager")));
-
-module.exports = employees;
 
 // Function call to initialize app
 init();

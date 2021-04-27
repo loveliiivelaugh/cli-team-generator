@@ -2,17 +2,15 @@
 
 # CLI Team Generator
 
-## Description
-
-A small CLI application that allows the user to dynamically generate a styled HTML document highlighting the details of a work team. This application is built using OOP, the Inquirer library, and Jest for testing.
-
-
 ## Table of Contents
 
 * [Description](#Description)
 
 
 * [Screenshots](#Screenshots)
+
+
+* [Features](#Features)
 
 
 * [Installation](#Installation)
@@ -32,13 +30,158 @@ A small CLI application that allows the user to dynamically generate a styled HT
 
 * [Questions](#Questions)
 
+## Description
 
+A small CLI application that allows the user to dynamically generate a styled HTML document highlighting the details of a work team. This application is built using OOP, the Inquirer library, and Jest for testing.
+
+## Screenshots
+
+![Screenshot1](./assets/images/screenshot1.png)
+
+![Screenshot2](./assets/images/screenshot2.png)
+
+## Demo
+
+![Screencast1](./assets/images/screencast1.mov)
+
+![Screencast2](./assets/images/screencast1.mov)
+
+## Features
+
+- Object Oriented Programming Class Implementation
+
+```
+class Employee {
+  constructor(name, id, email) {
+    this.name = name;
+    this.id = id;
+    this.email = email;
+  }
+
+  getName() { return this.name; }
+
+  getId() { return this.id; }
+
+  getEmail() { return this.email; }
+
+  getRole() { return "Employee"; }
+}
+
+class Manager extends Employee {
+  constructor(name, id, email, officeNumber) {
+    
+    super(name, id, email);
+    
+    this.officeNumber = officeNumber;
+  }
+  
+  getRole() { return "Manager"; }
+}
+```
+
+- Test Driven Development with Jest
+
+```
+const { Employee } = require("../lib/classes");
+
+describe("Employee", () => {
+
+  describe("Initialization", () => {
+    it("should create an object with 'name', 'index', and 'email'", () => {
+      const employee = new Employee("Tester", 1, "test@test.test");
+
+      expect(employee).toEqual({name: "Tester", id: 1, email: "test@test.test"});
+    });
+  });
+
+  describe("getName", () => {
+    it("should return the value of the name property on the object", () => {
+      const employee = new Employee("Tester", 1, "test@test.test");
+
+      const name = employee.getName();
+
+      expect(name).toEqual("Tester");
+    });
+  });
+
+  ...
+
+  });
+```
+
+- Input Validation
+
+```
+const relativeQuestion = (employees, type) => {
+  return {
+    "Manager": {
+      type: 'number',
+      name: 'office',
+      message: 'What is your office number?',
+      validate: value => value.toString().match(/\b([0-9]|[1-9][0-9]|[1-9][0-9][0-9])\b/) ? true : 'Please enter a valid number between 0 - 999'
+    },
+    "Engineer": {
+      type: 'input',
+      name: 'github',
+      message: 'What is your GitHub username?',
+      validate: value => value.match(/^[a-z0-9_-]{3,15}$/) ? true : 'Please enter a valid username'
+    },
+    "Intern": {
+      type: 'input',
+      name: 'school',
+      message: 'What school do you attend?',
+      validate: value => value.match(/^[a-zA-Z]+ [a-zA-Z]+$/) ? true : 'Please enter a valid school'
+    }
+  }[type];
+};
+
+const questions = (employees, type) => [
+  {
+    type: 'input',
+    name: 'name',
+    message: 'What is your name?',
+    validate: value => value.match(/^[a-zA-Z]+$/) ? true : 'Please enter a valid name'
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: "What is your email?",
+    validate: value => 
+      !value.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) ? 'Please enter a valid email' :
+      employees.forEach(employee => console.log(employee.email == value, employee.email, value)) ? 'This email is already in use' : true
+  },
+  {
+    type: 'number',
+    name: 'id',
+    message: 'What is your employee ID?',
+    validate: value => value.toString().match(/\b([0-9]|[1-9][0-9])\b/) ? true : 'Please enter a valid number between 0 - 99'
+  },
+  relativeQuestion(employees, type),
+  {
+    type: 'rawlist',
+    name: 'createNewEmployee',
+    message: 'Would you like to create another employee?',
+    choices: ["Engineer", "Intern", "Quit"],
+    default: 0
+  }
+];
+
+module.exports = questions;
+```
 
 ## Installation
 
-<code>
-npm install
-</code>
+1. `git clone https://github.com/loveliiivelaugh/cli-team-generator.git`
+
+2. `npm install`
+
+## Usage
+
+1. `node index.js`
+
+2. Use the terminal to answer the questions and navigate the menu.
+
+3. The generated html file will be located at `./dist/index.html`
 
 ## License
 
@@ -56,13 +199,17 @@ Open to contributions.
 
 ## Tests
 
-npm run test
+Tests are located in the `./tests/` directory. There is one file containing all of the tests for each of the 4 classes.
+
+1. To run the tests --> `npm run test`
+
+![Screenshot of Passing Tests](./assets/images/testscreenshot.png)
 
 ## Questions
 
 Follow me at my [GitHub](https://github.com/loveliiivelaugh) to discover more of my projects.
 
-Feel free to reach out at my [email](woodward.michael.a@gmail.com) woodward.michael.a@gmail.com if you have any odditional questions or just want to chat!
+Feel free to reach out at my email, [woodward.michael.a@gmail.com](woodward.michael.a@gmail.com) if you have any odditional questions or just want to chat!
 
 
 #### This README was generated with the [CLI README Generator](https://github.com/loveliiivelaugh/nu-hw9-cli-readme-generator) app.

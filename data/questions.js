@@ -32,7 +32,9 @@ const questions = (employees, type) => [
     type: 'input',
     name: 'email',
     message: "What is your email?",
-    validate: value => value.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) ? true : 'Please enter a valid email'
+    validate: value => 
+      !value.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) ? 'Please enter a valid email' :
+      employees.forEach(employee => console.log(employee.email == value, employee.email, value)) ? 'This email is already in use' : true
   },
   {
     type: 'number',
