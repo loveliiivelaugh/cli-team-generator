@@ -32,7 +32,7 @@
 
 ## Description
 
-A small CLI application that allows the user to dynamically generate a styled HTML document highlighting the details of a work team. This application is built using OOP, the Inquirer library, and Jest for testing.
+A small CLI application that allows the user to dynamically generate a styled HTML document highlighting the details of a work team. This application is built using OOP predefining the structure of 3 employee sub classes and 1 super class to be used with data acquired from interacting with the CLI. The interactions are captured using the Inquirer library. Finally, the final generated html document is styled using the Bootstrap styling library.
 
 ## Screenshots
 
