@@ -42,16 +42,16 @@ A small CLI application that allows the user to dynamically generate a styled HT
 
 ## Demo
 
-![Screencast1](./assets/images/screencast1.mov)
+![Screencast1](screencast1.mov)
 
-![Screencast2](./assets/images/screencast1.mov)
+![Screencast2](screencast1.mov)
 
 <video width="320" height="240" controls>
-  <source src="./assets/images/screencast1.mov" type="video/mp4">
+  <source src="./screencast1.mov" type="video/mp4">
 </video>
 
 <video width="320" height="240" controls>
-  <source src="./assets/images/screencast2.mov" type="video/mp4">
+  <source src="./screencast2.mov" type="video/mp4">
 </video>
 
 ## Features
@@ -77,12 +77,12 @@ A small CLI application that allows the user to dynamically generate a styled HT
   ...
 
   //switchCase function object to dynamically set the List Item depending on the type of Employee
-  const setListItem = employee => {
+  const setListItem = ({ officeNumber, github, school, getRole }) => {
     return {
-      "Manager": `Office Number: ${employee.officeNumber}`,
-      "Engineer": `GitHub: <a href="https://github.com/" target="blank">${employee.github}</a>`,
-      "Intern": `School: ${employee.school}`
-    }[employee.getRole()];
+      "Manager": `Office Number: ${officeNumber}`,
+      "Engineer": `GitHub: <a href="https://github.com/" target="blank">${github}</a>`,
+      "Intern": `School: ${school}`
+    }[getRole()];
   };
 ```
 
@@ -115,6 +115,9 @@ class Manager extends Employee {
   
   getRole() { return "Manager"; }
 }
+
+...
+
 ```
 
 - Test Driven Development with Jest

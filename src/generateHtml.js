@@ -11,12 +11,12 @@ const generateHtml = data => {
   };
 
   //switchCase function to set the dynamic List Item depending on the type of Employee
-  const setListItem = employee => {
+  const setListItem = ({ officeNumber, github, school, getRole }) => {
     return {
-      "Manager": `Office Number: ${employee.officeNumber}`,
-      "Engineer": `GitHub: <a href="https://github.com/" target="blank">${employee.github}</a>`,
-      "Intern": `School: ${employee.school}`
-    }[employee.getRole()];
+      "Manager": `Office Number: ${officeNumber}`,
+      "Engineer": `GitHub: <a href="https://github.com/" target="blank">${github}</a>`,
+      "Intern": `School: ${school}`
+    }[getRole()];
   };
 
   return `
