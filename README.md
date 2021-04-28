@@ -46,7 +46,45 @@ A small CLI application that allows the user to dynamically generate a styled HT
 
 ![Screencast2](./assets/images/screencast1.mov)
 
+<video width="320" height="240" controls>
+  <source src="./assets/images/screencast1.mov" type="video/mp4">
+</video>
+
+<video width="320" height="240" controls>
+  <source src="./assets/images/screencast2.mov" type="video/mp4">
+</video>
+
 ## Features
+
+- Es6 JavaScript
+
+- Code refactored and reduced to be as DRY as possible
+
+- Implementing switch case objects
+
+```
+  //switchCase function object to determine which type of class to construct the emmployee object with and then add to the employees array
+  const setEmployee = {
+    "Manager": (name, id, email, office) => employees.push(new Manager(name, id, email, office)),
+    "Engineer": (name, id, email, github) => employees.push(new Engineer(name, id, email, github)),
+    "Intern": (name, id, email, school) => employees.push(new Intern(name, id, email, school))
+  };
+
+  const { name, email, id, createNewEmployee, office, github, school } = response;
+
+  setEmployee[type](name, id, email, office || github || school);
+
+  ...
+
+  //switchCase function object to dynamically set the List Item depending on the type of Employee
+  const setListItem = employee => {
+    return {
+      "Manager": `Office Number: ${employee.officeNumber}`,
+      "Engineer": `GitHub: <a href="https://github.com/" target="blank">${employee.github}</a>`,
+      "Intern": `School: ${employee.school}`
+    }[employee.getRole()];
+  };
+```
 
 - Object Oriented Programming Class Implementation
 
@@ -109,32 +147,9 @@ describe("Employee", () => {
   });
 ```
 
-- Input Validation
+- Input Validation using the Inquirer library and regex
 
 ```
-const relativeQuestion = (employees, type) => {
-  return {
-    "Manager": {
-      type: 'number',
-      name: 'office',
-      message: 'What is your office number?',
-      validate: value => value.toString().match(/\b([0-9]|[1-9][0-9]|[1-9][0-9][0-9])\b/) ? true : 'Please enter a valid number between 0 - 999'
-    },
-    "Engineer": {
-      type: 'input',
-      name: 'github',
-      message: 'What is your GitHub username?',
-      validate: value => value.match(/^[a-z0-9_-]{3,15}$/) ? true : 'Please enter a valid username'
-    },
-    "Intern": {
-      type: 'input',
-      name: 'school',
-      message: 'What school do you attend?',
-      validate: value => value.match(/^[a-zA-Z]+ [a-zA-Z]+$/) ? true : 'Please enter a valid school'
-    }
-  }[type];
-};
-
 const questions = (employees, type) => [
   {
     type: 'input',
@@ -148,7 +163,7 @@ const questions = (employees, type) => [
     message: "What is your email?",
     validate: value => 
       !value.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) ? 'Please enter a valid email' :
-      employees.forEach(employee => console.log(employee.email == value, employee.email, value)) ? 'This email is already in use' : true
+      
   },
   {
     type: 'number',
